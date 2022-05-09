@@ -62,6 +62,31 @@ Dynammic Programming Steps
 
 
 
+Trees Algorithms
+
+1. BFS
+  This follows the Queue data structure with Arrays
+
+  Advantages:
+
+  A BFS will find the shortest path between the starting point and any other reachable node. A depth-first search will not necessarily find the shortest path.
+  Disadvantages
+
+  A BFS on a binary tree generally requires more memory than a DFS.
+
+2. DFS
+  This follows the Stack data structure with Arrays
+
+  Advantages:
+
+  Depth-first search on a binary tree generally requires less memory than breadth-first.
+  Depth-first search can be easily implemented with recursion.
+  Disadvantages
+
+  A DFS doesn't necessarily find the shortest path to a node, while breadth-first search does.
+
+
+
 Behavioral Questions to prep for CSOD Answers June 2021: 
 
   Tell me about a time when you were faced with a problem that had a number of possible solutions. 
@@ -165,6 +190,56 @@ Behavioral Questions to prep for CSOD Answers June 2021:
           behind the archithecture. I implemented the backend (api, service, and DB layer as well as system tests). I
           even created many features for the UI in displaying all of this reporting information.
 
+
+
+
+Behavioral Questions to prep for IdeaCloud Answers May 2022:
+  What did I do at IdeaCloud:
+   1. Refactored codebase
+     - Structured and organized the code repositories and enforced naming conventions
+     - Linted and formatted the code as well as automate this for all code additions
+     - Updated all React, converted class components to functional, converted lifecycle methods to hooks.
+     - Made components more modular (multiple components were over 1000 lines of code)
+     - Removed custom code and replaced with libraries (material-ui)
+     - Implimented prop-types to help with code clarity and with debugging
+   2. Improved the Sim development process
+     - Moved digital assets from local to be hosted on AWS S3
+       - This includes assets like images, videos, etc but also local packages  
+     - Created deployment environments for dev and stage. Previously they deployed only to prod. This included changing S3 absolute references to relative so multiple envs work.
+     - Updated/improved internal tools to streamline Sim development with Sim Core
+   3. Created incident management system to handle ERM (Enterprise Risk Management)
+     - Prepared checklist for SOC2 compliance in relation to company controls and testing those controls
+     - Trained employees on important controls quarterly to ensure we avoid incidents
+     - Resolved an incident with Adobe Partner login failure due to expired SSL cert that was required for API call to adobe's partner verification service.     
+   4. Managed, coached, and educated the team
+     - Acted as Product owner and created most epics and stories in our product mgmt system (ClickUp). I also conducted and managed team progress using the Scrum framework.
+     - Setup a TWA (Team Working Agreement) to set baselines to ensure all devs can work well together and understand mutual expectations
+     - I documented procedures for most internal processes. This helped educate the team, break down silos of information, and allowed for fast onboarding of new engineers.
+     - I reviewed all PR's and coached the devs while guiding them to add clean, working code while following best practices.
+     - I held multiple training video calls to educate on best practices and how to navigate and understand the codebase. I recorded these calls for onboarding documentation and reference.
+     - I met on 1v1 with developers on a schedule to discuss career progression, mentor them on their goals, and made sure to understand their happiness levels and how I could assist in creating a great working environment and team culture.
+     - I made sure to have remote/in-person team gatherings every 3 weeks for the team to connect on a level outside of work and have fun.
+   5. Features
+     - Added feature flag configuration to enable/disable features (previously feature branches were deployed to prod and there wasn't a good way to toggle features for certain clients or to test features)
+       - Made sim features configurable with flags. Features like bullet navigation bar or initial screen or full screen prompt
+     - Added route based code splitting to increase app performance using loadable
+     - Add loading bars to loading components so user has a clear understanding of page loads
+     - Changed Domain and DNS using Route53 for company name change from ForgeDx to IdeaCloud to ensure all subdomains routed correctly.
+     - Architected and implimented custom analytics solution for embeded sims using Cloudfront logs, S3, cron shell script, Lambda, and QuickSight. This was required because cross-domain analytics can't be tracked by Google Analytics.
+     - Finished Learn Mode and Remote features
+     - Mobile outline toggle
+   6. DevOps and DB Management
+     - Managed the DB, Authentication, and hosting of all client projects on Firebase.
+     - Implimented and educated team on best practices around git branching models, PR's, UAT, deployment pipeline processes and schedules (automating feature branch deploys to QA envs)
+       - They were previously all over the place with feature branches being deployed to prod, scripts being used to deploy rather than tags, some repos having limited environments while others had QA and Stage. 
+     - Moved authentication portal from serverless function single environment to containers in GCP CloudRun to enable multiple environments.
+     - Improved and documented client onboarding process bringing down time from 2 days to 3 hours.
+     - Saved $100's/month by refactoring how we use tools, what version of tools we use and who has access to them
+       - Clickup, Assemble, Bitbucket
+   7. Misc
+     - Setup the interview process and hired engineers.
+     - Provided tech support for clients and internal stakeholders with authentication or portal issues.
+     - Managed Google Analytics, Google Tag Manager, and Data Studio reports that we shared with clients
 */
 
 
@@ -275,11 +350,31 @@ function reverse(array) {
   }
 }
 
+
+// Random number
+function getRandom(floor, ceiling) {
+  return Math.floor(Math.random() * (ceiling - floor + 1)) + floor;
+}
+
+// Get Midpoint of range
+const midpoint = Math.floor((ceiling + floor) / 2);
+
+// Binary Tree Constructor
+class BinaryTreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left  = null;
+    this.right = null;
+  }
+}
+
 /*
   How to implment a Queue class with Linked List
     https://learnersbucket.com/tutorials/data-structures/implement-queue-using-linked-list/
     https://osgoodgunawan.medium.com/stack-and-queue-in-linkedlist-javascript-76ca86dd95fe
 */
+
+
 
 
 /*
